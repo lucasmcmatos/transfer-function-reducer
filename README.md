@@ -1,4 +1,4 @@
-# BlockReducer
+# Transfer Function Reducer (Block Diagram Reducer)
 
 ## Overview
 
