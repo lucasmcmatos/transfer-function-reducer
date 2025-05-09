@@ -16,7 +16,7 @@ def reduce_diagram(diagram: Diagram) -> Expr:
     """
     # Map block names to their transfer functions
     expr_map = {blk.name: blk.transfer_function for blk in diagram.blocks}
-    connections = list(diagram.connections)  # cópia mutável
+    connections = list(diagram.connections)  
 
     def replace_references(old: str, new: str):
         for conn in connections:
@@ -37,7 +37,7 @@ def reduce_diagram(diagram: Diagram) -> Expr:
             new_expr = reduce_series(expr_map[b1], expr_map[b2])
             new_name = f"({b1}_s_{b2})"
             expr_map[new_name] = new_expr
-            # delete both blocos antigos
+            # delete both old blocks
             del expr_map[b1], expr_map[b2]
             replace_references(b1, new_name)
             replace_references(b2, new_name)
@@ -57,7 +57,7 @@ def reduce_diagram(diagram: Diagram) -> Expr:
             new_expr = reduce_feedback(expr_map[fwd], expr_map[fb])
             new_name = f"({fwd}_f_{fb})"
             expr_map[new_name] = new_expr
-            # apaga cada bloco apenas uma vez
+            # delete each block only once
             for key in {fwd, fb}:
                 del expr_map[key]
             replace_references(fwd, new_name)
@@ -66,7 +66,7 @@ def reduce_diagram(diagram: Diagram) -> Expr:
         else:
             raise ValueError(f"Unknown connection type: {ctype}")
 
-    # ao final deve restar exatamente uma função de transferência
+    # at the end there must be exactly one transfer function left
     if len(expr_map) != 1:
         raise ValueError("Reduction incomplete: multiple blocks remain.")
     return next(iter(expr_map.values()))

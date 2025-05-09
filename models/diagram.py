@@ -6,7 +6,7 @@ class Diagram:
     Represents collection of blocks and their connections.
     """
 
-    def __init__(self, blocks: List[Block], connections: List[Dict]):  # Possível erro !
+    def __init__(self, blocks: List[Block], connections: List[Dict]): 
         self.blocks = blocks
         self.connections = connections
 
