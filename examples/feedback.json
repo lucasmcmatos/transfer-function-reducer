@@ -1,0 +1,14 @@
+{
+    "blocks": {
+      "G": "2",
+      "H": "1/(s+3)"
+    },
+    "connections": [
+      {
+        "type": "feedback",
+        "forward": "G",
+        "feedback": "H"
+      }
+    ]
+  }
+  

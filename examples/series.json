@@ -1,0 +1,13 @@
+{
+    "blocks": {
+      "G1": "2/(s+1)",
+      "G2": "5"
+    },
+    "connections": [
+      {
+        "type": "series",
+        "blocks": ["G1", "G2"]
+      }
+    ]
+  }
+  

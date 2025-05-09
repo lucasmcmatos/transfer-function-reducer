@@ -1,0 +1,13 @@
+{
+    "blocks": {
+      "G1": "1/(s+2)",
+      "G2": "3"
+    },
+    "connections": [
+      {
+        "type": "parallel",
+        "blocks": ["G1", "G2"]
+      }
+    ]
+  }
+  
